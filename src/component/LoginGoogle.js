@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -21,7 +21,9 @@ function LoginGoogle({ setAuthenticate }) {
     window.localStorage.removeItem("user_name");
     setAuthenticate(false);
   };
-
+useEffect(()=>{
+  window.localStorage.removeItem("user_id");
+}, [])
   return (
     <div className="login-button">
       {localStorage?.getItem("user_id") == null ? (
